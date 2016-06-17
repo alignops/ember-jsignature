@@ -1,4 +1,4 @@
-# Ember-jsignature
+# addon-jsignature
 
 This README outlines the details of collaborating on this Ember addon.
 

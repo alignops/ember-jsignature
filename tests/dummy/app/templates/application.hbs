@@ -1,0 +1,20 @@
+<div class="dummy-addon-jsignature">
+    {{addon-jsignature
+        dataFormat='svg'
+        color='#336'
+        background-color='#eee'
+        decor-color='rgba(0,0,0,.3)'
+        showUndoButton=true
+        lineWidth=3
+        
+        changeListener=(action "onChange")
+    }}
+    {{!--
+     --}}
+
+    <div>Img: {{{svg}}}</div>
+    <pre>bytes: {{svg.length}}</pre>
+    <pre>Data: {{svg}}</pre>
+</div>
+
+{{outlet}}
