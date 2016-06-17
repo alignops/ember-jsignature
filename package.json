@@ -39,7 +39,7 @@
     "loader.js": "^4.0.1"
   },
   "keywords": [
-  "busybusy",
+    "busybusy",
     "ember-addon",
     "jSignature"
   ],
