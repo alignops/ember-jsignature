@@ -1,7 +1,7 @@
 {
   "name": "addon-jsignature",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.1",
+  "description": "Ember addon for jSignature",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,11 +11,11 @@
     "start": "ember server",
     "test": "ember try:each"
   },
-  "repository": "",
+  "repository": "https://github.com/busybusy/ember-jsignature.git",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "busy inc.",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.2",
@@ -39,8 +39,9 @@
     "loader.js": "^4.0.1"
   },
   "keywords": [
+  "busybusy",
     "ember-addon",
-    "jsignature"
+    "jSignature"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.6",
