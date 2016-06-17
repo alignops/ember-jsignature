@@ -42,14 +42,9 @@ export default Ember.Component.extend(
      *   Addon Lifecycle
      */
 
-    init()
-    {
-        this._super();
-        this._setConfig();
-    },
-
     loadComponent: Ember.on('didInsertElement', function()
     {
+        this._setConfig();
         return this.jSignature(this.get('_config'))
             .on('change', () => this.onChange());
     }),
