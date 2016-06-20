@@ -1,20 +1,54 @@
 <div class="dummy-addon-jsignature">
-    {{addon-jsignature
-        dataFormat='svg'
-        color='#336'
-        background-color='#eee'
-        decor-color='rgba(0,0,0,.3)'
-        showUndoButton=true
-        lineWidth=3
-        
-        changeListener=(action "onChange")
-    }}
-    {{!--
-     --}}
 
-    <div>Img: {{{svg}}}</div>
-    <pre>bytes: {{svg.length}}</pre>
-    <pre>Data: {{svg}}</pre>
+    <p>Editable</p>
+    <div class="container-pad-01">
+        {{addon-jsignature
+            class="sig-pad-01"
+            exportFormat='base30'
+            color='#006'
+            background-color='#eee'
+            decor-color='rgba(0,0,0,.3)'
+            showUndoButton=true
+            lineWidth=3
+
+            width="100%"
+            height="400px"
+
+            command=command
+
+            changeListener=(action "onChange")
+        }}
+    </div>
+
+    <div class="buttons">
+        <button {{action "reset"}}>Reset</button>
+        <button {{action "clear"}}>Clear</button>
+        <button {{action "disable"}}>Disable</button>
+        <button {{action "enable"}}>Enable</button>
+        <button {{action "getData"}}>Get Data</button>
+    </div>
+
+    <p>Data:</p>
+    <pre>{{signatureData}}</pre>
+
+    <p>Import Example</p>
+    {{addon-jsignature
+        class="sig-pad-02"
+        importFormat='base30'
+        exportFormat='svg'
+        color='rgba(0,0,102,0.8)'
+        showUndoButton=false
+        readOnly=true
+
+        data='jBZe1Jttnmk1yfb8Y21O2V4U3M4x1E2woj8Za1u1H1W2W2B2Q2L1Q_9E0000000000Z5at1A1Lng36100Y48be1v1v1H1O1E_1uXZ5jdi1w1K1Xs1B1yaY1E1W3x3U1X2Ks1TpeZ21I1W3v3B3V1yhsd9Y91C1P2u1U1yhe65_5B087bm1z1EgmlZ11K1Q2v1Ueh240Y8h1Et1wkh311100005khed89'
+        changeListener=(action "log")
+    }}
 </div>
+
+<br />
+<br />
+<br />
+
+<p><a href="https://github.com/brinley/jSignature/">https://github.com/brinley/jSignature/</a></p>
 
 {{outlet}}

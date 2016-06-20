@@ -1,13 +1,20 @@
+/**
+ *
+ *  https://github.com/brinley/jSignature/
+ *
+ */
+
+
 import Ember from 'ember';
 // import layout from '../templates/components/addon-jsignature';
 
 const defaultConfig = {
     // plugins
-    UndoButton: true,
     CompressorSVG: true,
 
     // data formats: default(bitmap), native, base30, svg, svgbase64, image
-    dataFormat: 'svg',
+    importFormat: 'base30',
+    exportFormat: 'base30',
 
     // settings
     width: 'ratio',
@@ -20,7 +27,7 @@ const defaultConfig = {
     minFatFingerCompensation: -10,
     showUndoButton: false,
     readOnly: false,
-    data: [],
+    // data: null,
 
 };
 
@@ -35,6 +42,7 @@ export default Ember.Component.extend(
      *   Addon Attributes
      */
 
+    UndoButton: true,
     changeListener: null,
 
 
@@ -45,8 +53,14 @@ export default Ember.Component.extend(
     loadComponent: Ember.on('didInsertElement', function()
     {
         this._setConfig();
-        return this.jSignature(this.get('_config'))
+
+        this.jSignature(this.get('_config'))
             .on('change', () => this.onChange());
+
+        if(!Ember.isNone(this.get('data')))
+        {
+            this.setData(this.get('data'));
+        }
     }),
 
     destroyComponent: Ember.on('willDestroyElement', function()
@@ -55,6 +69,19 @@ export default Ember.Component.extend(
     }),
 
     onEnd: function(){},
+
+    dataObserver: Ember.observer('data', function() {
+        this.importData(this.get('data'));
+    }),
+
+    commandObserver: Ember.observer('command', function() {
+        const command = this.get('command');
+
+        const args = command.hasOwnProperty('args') ? command.args : [];
+        const cb = command.hasOwnProperty('cb') ? command.cb : function(){};
+
+        cb(this.jSignature(command.command, ...args));
+    }),
 
 
 
@@ -67,26 +94,25 @@ export default Ember.Component.extend(
         return this.$().jSignature(command, ...args);
     },
 
-    getData()
+    getData(exportFormat)
     {
-        const dataFormat = this.get('_config').dataFormat;
         const supportedFormats = this.listPlugins('export');
-        const isSupported = (supportedFormats.indexOf(dataFormat) > -1);
+        const isSupported = (supportedFormats.indexOf(exportFormat) > -1);
 
-        Ember.assert(`'${dataFormat}' is not a supported format for exporting`, isSupported);
+        Ember.assert(`'${exportFormat}' is not a supported format for exporting`, isSupported);
 
-        return this.jSignature('getData', dataFormat);
+        return this.jSignature('getData', exportFormat);
     },
 
     setData(data)
     {
-        const dataFormat = this.get('_config').dataFormat;
+        const importFormat = this.get('_config').importFormat;
         const supportedFormats = this.listPlugins('import');
-        const isSupported = (supportedFormats.indexOf(dataFormat) > -1);
+        const isSupported = (supportedFormats.indexOf(importFormat) > -1);
 
-        Ember.assert(`'${dataFormat}' is not a supported format for importing`, isSupported);
+        Ember.assert(`'${importFormat}' is not a supported format for importing`, isSupported);
 
-        return this.jSignature('setData', data, this.get('_config').dataFormat);
+        return this.jSignature('setData', data, this.get('_config').importFormat);
     },
 
     importData(...args)
@@ -141,7 +167,7 @@ export default Ember.Component.extend(
 
         if(!Ember.isNone(callback) && typeof callback === 'function')
         {
-            return callback(this.getData());
+            return callback(this.getData(this.get('_config.exportFormat')));
         }
     },
 
@@ -155,14 +181,17 @@ export default Ember.Component.extend(
     {
         const defaultKeys = Object.keys(defaultConfig);
 
-        let config = defaultKeys.reduce((acc, key) =>
+
+        const config = defaultKeys.reduce((result, key) =>
         {
             return Object.assign(
-                acc,
+                result,
                 { [key]: this.getWithDefault(key, defaultConfig[key]) }
             );
-        },
-        {});
+        }, {});
+
+        config.UndoButton = config.showUndoButton;
+        config.dataFormat = config.importFormat;
 
         this.set('_config', config);
 

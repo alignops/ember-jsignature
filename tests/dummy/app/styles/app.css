@@ -1,7 +1,20 @@
-.ember-addon-jsignature {
 
+.container-pad-01 {
+    height: 400px;
+    width: 100%;
 }
+
+/*.sig-pad-01 {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+}*/
 
 pre {
     white-space: pre-wrap;
+    max-width: 100%;
+    overflow: scroll;
 }
