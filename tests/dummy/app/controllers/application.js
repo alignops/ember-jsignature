@@ -7,10 +7,10 @@ export default Ember.Controller.extend({
     signatureData: null,
     command: null,
 
-    init()
-    {
-        this.set('command', {command: 'listPlugins', cb: (...args) => console.log(...args)});
-    },
+    // init()
+    // {
+    //     this.set('command', {command: 'listPlugins', cb: (...args) => console.log(...args)});
+    // },
 
     actions: {
         onChange(data) {

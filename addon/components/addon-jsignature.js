@@ -77,7 +77,6 @@ export default Ember.Component.extend(
 
     commandObserver: Ember.observer('command', function() {
         const command = this.get('command');
-
         const args = command.hasOwnProperty('args') ? command.args : [];
         const cb = command.hasOwnProperty('cb') ? command.cb : function(){};
 
