@@ -9,7 +9,6 @@ export default Ember.Controller.extend({
 
     init()
     {
-        console.log('asdf')
         this.set('command', {command: 'listPlugins', cb: (...args) => console.log(...args)});
     },
 

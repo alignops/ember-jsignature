@@ -55,7 +55,7 @@ export default Ember.Component.extend(
         this._setConfig();
 
         this.jSignature(this.get('_config'))
-            .on('change', () => this.onChange());
+            .on('change', () => this._onChange());
 
         if(!Ember.isNone(this.get('data')))
         {
@@ -72,6 +72,7 @@ export default Ember.Component.extend(
 
     dataObserver: Ember.observer('data', function() {
         this.importData(this.get('data'));
+        this._onChange();
     }),
 
     commandObserver: Ember.observer('command', function() {
@@ -96,19 +97,16 @@ export default Ember.Component.extend(
 
     getData(exportFormat)
     {
-        const supportedFormats = this.listPlugins('export');
-        const isSupported = (supportedFormats.indexOf(exportFormat) > -1);
+        const isSupported = this._isSupportedFormat(exportFormat, 'export');
 
         Ember.assert(`'${exportFormat}' is not a supported format for exporting`, isSupported);
 
         return this.jSignature('getData', exportFormat);
     },
 
-    setData(data)
+    setData(data, importFormat = this.get('_config').importFormat)
     {
-        const importFormat = this.get('_config').importFormat;
-        const supportedFormats = this.listPlugins('import');
-        const isSupported = (supportedFormats.indexOf(importFormat) > -1);
+        const isSupported = this._isSupportedFormat(importFormat, 'import');
 
         Ember.assert(`'${importFormat}' is not a supported format for importing`, isSupported);
 
@@ -161,21 +159,31 @@ export default Ember.Component.extend(
     },
 
 
-    onChange()
-    {
-        const callback = this.get('changeListener');
-
-        if(!Ember.isNone(callback) && typeof callback === 'function')
-        {
-            return callback(this.getData(this.get('_config.exportFormat')));
-        }
-    },
-
-
 
     /**
      *   Private
      */
+
+
+    _onChange()
+    {
+        const callback = this.get('changeListener');
+        const exportFormat = this.get('_config.exportFormat');
+
+        if(!Ember.isNone(callback) && typeof callback === 'function')
+        {
+            const data = this.getData(exportFormat);
+            return callback(data);
+        }
+    },
+
+    _isSupportedFormat(format, formatType)
+    {
+        const supportedFormats = this.listPlugins(formatType);
+        const isSupported = (supportedFormats.indexOf(format) > -1);
+
+        return isSupported;
+    },
 
     _setConfig: function ()
     {
