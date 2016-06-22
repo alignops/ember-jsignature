@@ -1,1 +1,1 @@
-export { default } from 'addon-jsignature/components/addon-jsignature';
+export { default } from 'ember-jsignature/components/addon-jsignature';
