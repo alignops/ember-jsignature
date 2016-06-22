@@ -1,5 +1,5 @@
 {
-  "name": "addon-jsignature",
+  "name": "ember-jsignature",
   "version": "0.0.2",
   "description": "Ember addon for jSignature",
   "directories": {
