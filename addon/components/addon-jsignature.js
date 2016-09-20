@@ -11,8 +11,8 @@ const defaultConfig = {
     CompressorSVG: true,
 
     // data formats: default(bitmap), native, base30, svg, svgbase64, image
-    importFormat: 'base30',
-    exportFormat: 'base30',
+    importFormat: 'native',
+    exportFormat: 'native',
 
     // settings
     width: 'ratio',

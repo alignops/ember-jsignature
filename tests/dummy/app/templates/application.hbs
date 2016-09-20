@@ -1,23 +1,25 @@
 <div class="dummy-addon-jsignature">
 
     <p>Editable</p>
-    <div class="container-pad-01">
-        {{ember-jsignature
-            class="sig-pad-01"
-            exportFormat='svg'
-            color='#006'
-            background-color='#eee'
-            decor-color='rgba(0,0,0,.3)'
-            showUndoButton=true
-            lineWidth=3
+    <div class="sig-outer">
+		{{ember-jsignature
+			class="sig-pad-01"
+			exportFormat=exportFormat
+			importFormat=importFormat
+			color='#006'
+			background-color='#fff'
+			decor-color='rgba(0,0,0,.3)'
+			showUndoButton=true
+			lineWidth=3
 
-            width="100%"
-            height="400px"
+			width="ratio"
+			height="ratio"
+			sizeRatio=3.2
 
-            command=command
+			command=command
 
-            changeListener=(action "onChange")
-        }}
+			changeListener=(action "onChange")
+		}}
     </div>
 
     <div class="buttons">
@@ -30,6 +32,9 @@
 
     <p>Data:</p>
     <pre>{{signatureData}}</pre>
+
+    <p>SVG:</p>
+    <div class="preview">{{{signatureData}}}</div>
 
     <p>Import Example</p>
     {{ember-jsignature
