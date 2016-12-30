@@ -1,9 +1,19 @@
-
-.container-pad-01 {
-    height: 400px;
-    width: 100%;
+body {
+	margin: 0;
+	padding: 0;
+}
+.sig-outer {
+	box-sizing: border-box;
+	background-color: #eee;
+	padding: 20px;
 }
 
+canvas {
+	border-radius: 10px;
+}
+.buttons {
+	margin-top: 20px;
+}
 /*.sig-pad-01 {
     position: fixed;
     left: 0;
@@ -17,4 +27,8 @@ pre {
     white-space: pre-wrap;
     max-width: 100%;
     overflow: scroll;
+}
+
+.preview svg {
+	border: 1px solid black;
 }
