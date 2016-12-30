@@ -10,10 +10,10 @@ ember-cli version >=2.6.2
 
 ## Installation
 
-Install this addon using ember-cli: 
+Install this addon using ember-cli:
 ```
 ember install ember-jsignature
 ```
 
 [embadge]: http://embadge.io/
-[ember-badge]: http://embadge.io/v1/badge.svg?start=2.6.0
+[ember-badge]: http://embadge.io/v1/badge.svg?start=2.10.0
