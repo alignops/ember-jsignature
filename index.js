@@ -4,8 +4,7 @@
 module.exports = {
 	name: 'ember-jsignature',
 
-	included: function(target)
-	{
+	included: function(target) {
 		this._super.included.apply(this, arguments);
 
 		var app = target.app || target;
