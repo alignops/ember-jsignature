@@ -16,4 +16,4 @@ ember install ember-jsignature
 ```
 
 [embadge]: http://embadge.io/
-[ember-badge]: http://embadge.io/v1/badge.svg?start=2.10.0
+[ember-badge]: http://embadge.io/v1/badge.svg?start=2.11.0
