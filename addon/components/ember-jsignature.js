@@ -4,7 +4,6 @@
  *
  */
 import Ember from 'ember';
-//import layout from '../templates/components/ember-jsignature';
 
 const defaultConfig = {
 	// plugins
@@ -24,23 +23,21 @@ const defaultConfig = {
 	lineWidth: 0,
 	minFatFingerCompensation: -10,
 	showUndoButton: false,
-	readOnly: false,
-	// data: null,
+	readOnly: false
 };
 
 export default Ember.Component.extend({
 	classNames: ['ember-jsignature'],
-	//layout,
 
 	/**
-		*   Addon Attributes
-		*/
+	 *   Addon Attributes
+	 */
 	UndoButton: true,
 	changeListener: null,
 
 	/**
-		*   Addon Lifecycle
-		*/
+	 *   Addon Lifecycle
+	 */
 	loadComponent: Ember.on('didInsertElement', function() {
 		this._setConfig();
 
