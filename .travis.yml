@@ -40,7 +40,7 @@ script:
 
 addons:
   code_climate:
-    repo_token: 816606987549c1d473cace8af086a14f4e653bc67f3dd8c46d208980ab906b66
+    repo_token: 1025ef077604a530427bcb57648d2d29514647a15da423bccdf7b1dc1a28a21d
 
 after_success:
   - npm install -g codeclimate-test-reporter
