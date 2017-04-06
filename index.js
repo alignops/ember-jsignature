@@ -13,5 +13,5 @@ module.exports = {
 		app.import(app.bowerDirectory + '/jSignature/src/plugins/jSignature.CompressorBase30.js');
 		app.import(app.bowerDirectory + '/jSignature/src/plugins/jSignature.CompressorSVG.js');
 		app.import(app.bowerDirectory + '/jSignature/src/plugins/jSignature.UndoButton.js');
-	},
+	}
 };
