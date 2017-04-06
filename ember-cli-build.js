@@ -1,11 +1,10 @@
-/*jshint node:true*/
-/* global require, module */
-var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
+/* eslint-env node */
+const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 module.exports = function(defaults) {
-	var app = new EmberAddon(defaults, {
-		// Add options here
-	});
+  var app = new EmberAddon(defaults, {
+    // Add options here
+  });
 
   /*
     This build file specifies the options for the dummy test app of this
@@ -18,5 +17,5 @@ module.exports = function(defaults) {
   app.import('bower_components/jSignature/src/plugins/jSignature.CompressorBase30.js');
   app.import('bower_components/jSignature/src/plugins/jSignature.UndoButton.js');
 
-	return app.toTree();
+  return app.toTree();
 };
