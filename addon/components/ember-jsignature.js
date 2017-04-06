@@ -4,6 +4,7 @@
  *
  */
 import Ember from 'ember';
+//import layout from '../templates/components/ember-jsignature';
 
 const defaultConfig = {
 	// plugins
@@ -28,6 +29,7 @@ const defaultConfig = {
 
 export default Ember.Component.extend({
 	classNames: ['ember-jsignature'],
+	//layout,
 
 	/**
 	 *   Addon Attributes
