@@ -11,7 +11,7 @@ ember-jsignature
 Installation
 ------------------------------------------------------------------------------
 
-Install this addon using ember-cli:
+Install this addon using ember-cli (NOTE: Version 2.8 and up supported):
 ```
 ember install ember-jsignature
 ```
