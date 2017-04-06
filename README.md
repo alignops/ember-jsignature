@@ -5,6 +5,9 @@ ember-jsignature
 [![npm version](https://badge.fury.io/js/ember-jsignature.svg)](https://badge.fury.io/js/ember-jsignature)
 [![Ember Observer Score](https://emberobserver.com/badges/ember-jsignature.svg)](https://emberobserver.com/addons/ember-jsignature)
 [![Ember badge][ember-badge]][embadge]
+[![Code Climate](https://codeclimate.com/github/busybusy/ember-jsignature/badges/gpa.svg)](https://codeclimate.com/github/busybusy/ember-jsignature)
+[![Test Coverage](https://codeclimate.com/github/busybusy/ember-jsignature/badges/coverage.svg)](https://codeclimate.com/github/busybusy/ember-jsignature/coverage)
+[![Issue Count](https://codeclimate.com/github/busybusy/ember-jsignature/badges/issue_count.svg)](https://codeclimate.com/github/busybusy/ember-jsignature)
 
 [ember cli](https://ember-cli.com/) addon for [jSignature](https://willowsystems.github.io/jSignature/#/about/)
 
