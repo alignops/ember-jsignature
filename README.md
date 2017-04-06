@@ -6,7 +6,7 @@ ember-jsignature
 [![Ember Observer Score](https://emberobserver.com/badges/ember-jsignature.svg)](https://emberobserver.com/addons/ember-jsignature)
 [![Ember badge][ember-badge]][embadge]
 
-This is an ember-cli addon wrapper for jSignature.
+[ember cli](https://ember-cli.com/) addon for [jSignature](https://willowsystems.github.io/jSignature/#/about/)
 
 Installation
 ------------------------------------------------------------------------------

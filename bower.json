@@ -1,6 +1,9 @@
 {
   "name": "ember-jsignature",
   "dependencies": {
-		"jSignature": "^2.0.2"
-	}
+    "jSignature": "^2.0.2"
+  },
+  "devDependencies": {
+    "blanket": "5e94fc30f2e694bb5c3718ddcbf60d467f4b4d26"
+  }
 }
