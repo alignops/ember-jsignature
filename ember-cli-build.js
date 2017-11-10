@@ -12,10 +12,6 @@ module.exports = function(defaults) {
     This build file does *not* influence how the addon or the app using it
     behave. You most likely want to be modifying `./index.js` or app's build file
   */
-  app.import('bower_components/jSignature/src/jSignature.js');
-  app.import('bower_components/jSignature/src/plugins/jSignature.CompressorSVG.js');
-  app.import('bower_components/jSignature/src/plugins/jSignature.CompressorBase30.js');
-  app.import('bower_components/jSignature/src/plugins/jSignature.UndoButton.js');
 
   return app.toTree();
 };

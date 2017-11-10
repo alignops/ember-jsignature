@@ -4,14 +4,22 @@
 module.exports = {
 	name: 'ember-jsignature',
 
+	options: {
+		nodeAssets: {
+			jsignature: {
+				srcDir: 'src',
+				import: [
+					'jSignature.js',
+					'plugins/jSignature.UndoButton.js',
+					'plugins/jSignature.CompressorSVG.js',
+					'plugins/jSignature.CompressorBase30.js'
+					// 'plugins/signhere/jSignature.SignHere.js'
+				]
+			}
+		}
+	},
+
 	included: function(target) {
 		this._super.included.apply(this, arguments);
-
-		var app = target.app || target;
-
-		app.import(app.bowerDirectory + '/jSignature/src/jSignature.js');
-		app.import(app.bowerDirectory + '/jSignature/src/plugins/jSignature.CompressorBase30.js');
-		app.import(app.bowerDirectory + '/jSignature/src/plugins/jSignature.CompressorSVG.js');
-		app.import(app.bowerDirectory + '/jSignature/src/plugins/jSignature.UndoButton.js');
 	}
 };
