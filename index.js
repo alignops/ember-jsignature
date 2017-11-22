@@ -17,9 +17,5 @@ module.exports = {
 				]
 			}
 		}
-	},
-
-	included: function(target) {
-		this._super.included.apply(this, arguments);
 	}
 };
