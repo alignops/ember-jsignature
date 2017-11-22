@@ -2,12 +2,12 @@
  * @module Controllers
  *
  */
-import Ember from 'ember';
+import Controller from '@ember/controller';
 
 /**
  * @class Application
  */
-export default Ember.Controller.extend({
+export default Controller.extend({
 	signatureData: null,
 	command: null,
 

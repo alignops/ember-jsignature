@@ -1,6 +1,6 @@
+import $ from 'jquery';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import Ember from 'ember';
 
 const TEST_DATA_BASE30 = `jBZe1Jttnmk1yfb8Y21O2V4U3M4x1E2woj8Za1u1H1W2W2B2Q2L1Q_9E0000000000Z5at1A1Lng36100Y48be1v1v1H1O1E_1uXZ5jdi1w1K1Xs1B1yaY1E1W3x3U1X2Ks1TpeZ21I1W3v3B3V1yhsd9Y91C1P2u1U1yhe65_5B087bm1z1EgmlZ11K1Q2v1Ueh240Y8h1Et1wkh311100005khed89`;
 
@@ -31,7 +31,7 @@ test('properties | background-color', function(assert) {
 	this.render(hbs`{{ember-jsignature background-color=bgColor}}`);
 
 	// jquery returngs rgba format, so we need an rgba to compare
-	assert.equal(this.$().find('canvas').css('background-color'), Ember.$(`<div style="background-color: ${expected}" />`).css('background-color'), 'background-color matches');
+	assert.equal(this.$().find('canvas').css('background-color'), $(`<div style="background-color: ${expected}" />`).css('background-color'), 'background-color matches');
 });
 
 test('properties | width', function(assert) {

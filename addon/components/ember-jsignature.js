@@ -3,7 +3,14 @@
  *  https://github.com/brinley/jSignature/
  *
  */
-import Ember from 'ember';
+import { assign } from '@ember/polyfills';
+
+import { assert } from '@ember/debug';
+import { observer } from '@ember/object';
+import { cancel } from '@ember/runloop';
+import { isNone } from '@ember/utils';
+import { on } from '@ember/object/evented';
+import Component from '@ember/component';
 //import layout from '../templates/components/ember-jsignature';
 
 const defaultConfig = {
@@ -27,7 +34,7 @@ const defaultConfig = {
 	readOnly: false
 };
 
-export default Ember.Component.extend({
+export default Component.extend({
 	classNames: ['ember-jsignature'],
 	//layout,
 
@@ -40,28 +47,28 @@ export default Ember.Component.extend({
 	/**
 	 *   Addon Lifecycle
 	 */
-	loadComponent: Ember.on('didInsertElement', function() {
+	loadComponent: on('didInsertElement', function() {
 		this._setConfig();
 
 		this.jSignature(this.get('_config')).on('change', () => this._onChange());
 
-		if (!Ember.isNone(this.get('data'))) {
+		if (!isNone(this.get('data'))) {
 				this.setData(this.get('data'));
 		}
 	}),
 
-	destroyComponent: Ember.on('willDestroyElement', function() {
-		Ember.run.cancel(this.scheduledUpdate);
+	destroyComponent: on('willDestroyElement', function() {
+		cancel(this.scheduledUpdate);
 	}),
 
 	onEnd: function(){},
 
-	dataObserver: Ember.observer('data', function() {
+	dataObserver: observer('data', function() {
 		this.importData(this.get('data'));
 		this._onChange();
 	}),
 
-	commandObserver: Ember.observer('command', function() {
+	commandObserver: observer('command', function() {
 		const command = this.get('command');
 		const args = command.hasOwnProperty('args') ? command.args : [];
 		const cb = command.hasOwnProperty('cb') ? command.cb : function(){};
@@ -79,7 +86,7 @@ export default Ember.Component.extend({
 	getData(exportFormat) {
 		const isSupported = this._isSupportedFormat(exportFormat, 'export');
 
-		Ember.assert(`'${exportFormat}' is not a supported format for exporting`, isSupported);
+		assert(`'${exportFormat}' is not a supported format for exporting`, isSupported);
 
 		return this.jSignature('getData', exportFormat);
 	},
@@ -87,7 +94,7 @@ export default Ember.Component.extend({
 	setData(data, importFormat = this.get('_config').importFormat) {
 		const isSupported = this._isSupportedFormat(importFormat, 'import');
 
-		Ember.assert(`'${importFormat}' is not a supported format for importing`, isSupported);
+		assert(`'${importFormat}' is not a supported format for importing`, isSupported);
 
 		return this.jSignature('setData', data, this.get('_config').importFormat);
 	},
@@ -135,7 +142,7 @@ export default Ember.Component.extend({
 		const callback = this.get('changeListener');
 		const exportFormat = this.get('_config.exportFormat');
 
-		if(!Ember.isNone(callback) && typeof callback === 'function') {
+		if(!isNone(callback) && typeof callback === 'function') {
 			const data = this.getData(exportFormat);
 			return callback(data);
 		}
@@ -151,7 +158,7 @@ export default Ember.Component.extend({
 	_setConfig: function () {
 		const defaultKeys = Object.keys(defaultConfig);
 		const config = defaultKeys.reduce((result, key) => {
-			return Ember.assign(result, { [key]: this.getWithDefault(key, defaultConfig[key]) });
+			return assign(result, { [key]: this.getWithDefault(key, defaultConfig[key]) });
 		}, {});
 
 		config.UndoButton = config.showUndoButton;
