@@ -45,6 +45,10 @@
     "ember-source": "~2.16.2",
     "loader.js": "^4.6.0"
   },
+  "overrides": {
+    "y18n": "^3.2.2",
+    "lodash": "^4.17.21"
+  },
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
   },
